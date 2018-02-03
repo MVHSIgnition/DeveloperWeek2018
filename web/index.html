@@ -4,9 +4,9 @@
 	<head>
 		<meta charset="utf-8">
 		<title>Home - EZ Goal</title>
-		<link rel="stylesheet" type="text/css" href="css/global.css">
-		<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+		<link href="https://fonts.googleapis.com/css?family=Roboto|Material+Icons" rel="stylesheet">
 		<link rel="stylesheet" type="text/css" href="css/material-components.css">
+		<link rel="stylesheet" type="text/css" href="css/global.css">
 	</head>
 	<body>
 		<!-- navbar -->
@@ -18,59 +18,207 @@
 				<span>Home</span>
 				<span>Rewards</span>
 				<span>Settings</span>
-				<span>New Goal</span>
 			</div>
 		</div>
 		<div style="height: 60px"></div>
 		<!-- end navbar -->
+		<!-- floating stuff -->
+		<button class="mdc-fab material-icons app-fab--absolute new-goal-button mdc-need-ripple" aria-label="Favorite">
+			<span class="mdc-fab__icon material-icons">create</span>
+		</button>
+		<aside id="new-goal-dialog" class="mdc-dialog" role="alertdialog" aria-labelledby="my-mdc-dialog-label" aria-describedby="my-mdc-dialog-description">
+			<div class="mdc-dialog__surface">
+				<header class="mdc-dialog__header">
+					<h2 id="my-mdc-dialog-label" class="mdc-dialog__header__title">
+						Create a new goal
+					</h2>
+				</header>
+				<br>
+				<div style="padding: 20px;">
+					<div id="demo-tf-box-wrapper">
+						<div id="tf-box-example" class="mdc-text-field mdc-text-field--box" data-demo-no-auto-js>
+							<input required type="text" id="tf-box" class="mdc-text-field__input"
+										 aria-controls="name-validation-message">
+							<label for="tf-box" class="mdc-text-field__label">Goal Name</label>
+							<div class="mdc-text-field__bottom-line"></div>
+						</div>
+					</div>
+					<section id="demo-text-field-textarea-wrapper">
+						<div class="mdc-text-field mdc-text-field--textarea description-of-new-goal">
+							<textarea id="textarea" class="mdc-text-field__input" required rows="8" cols="40"></textarea>
+							<label for="textarea" class="mdc-text-field__label">Enter a description of your goal.</label>
+						</div>
+					</section>
+					<div class="mdc-select">
+						<select class="mdc-select__surface">
+							<option value="" default selected>Udacity</option>
+							<option value="grains">FitBit</option>
+						</select>
+						<div class="mdc-select__bottom-line"></div>
+					</div>
+				</div>
+				<br>
+				<p class="mdc-text-field-helper-text" aria-hidden="true">
+					This will be displayed on your public profile
+				</p>
+				<footer class="mdc-dialog__footer">
+					<button type="button" class="mdc-button mdc-dialog__footer__button mdc-dialog__footer__button--cancel" onclick="submitNewGoal();">Cancel</button>
+					<button type="button" class="mdc-button mdc-dialog__footer__button mdc-dialog__footer__button--accept">Ok</button>
+				</footer>
+			</div>
+			<div class="mdc-dialog__backdrop"></div>
+		</aside>
+		<!-- floating stuff -->
 		<div class="main-content">
 			<div>
-				<div class="tile">
-					<span class="notification-badge">3</span>
-					<div class="tile-inner-content">
-						<img src="images/test.jpg" class="tile-image">
-						<h1 class="tile-name">Sexy Billy</h1>
-						<p>Sexy Billy has three new goals.</p>
+				<div style="width: 33%; display: inline-block;">
+					<div class="tile">
+						<span class="notification-badge">3</span>
+						<div class="tile-inner-content">
+							<img src="images/test.jpg" class="tile-image">
+							<h1 class="tile-name">Sexy Billy</h1>
+							<p>Sexy Billy has three new goals.</p>
+						</div>
+					</div>
+					<div class="tile">
+						<span class="notification-badge">3</span>
+						<div class="tile-inner-content">
+							<img src="images/test.jpg" class="tile-image">
+							<h1 class="tile-name">Sexy Billy</h1>
+							<p>Sexy Billy has three new goals.</p>
+						</div>
+					</div>
+					<div class="tile">
+						<span class="notification-badge">3</span>
+						<div class="tile-inner-content">
+							<img src="images/test.jpg" class="tile-image">
+							<h1 class="tile-name">Sexy Billy</h1>
+							<p>Sexy Billy has three new goals.</p>
+						</div>
+					</div>
+					<div class="tile">
+						<span class="notification-badge">3</span>
+						<div class="tile-inner-content">
+							<img src="images/test.jpg" class="tile-image">
+							<h1 class="tile-name">Sexy Billy</h1>
+							<p>Sexy Billy has three new goals.</p>
+						</div>
+					</div>
+					<div class="tile">
+						<span class="notification-badge">3</span>
+						<div class="tile-inner-content">
+							<img src="images/test.jpg" class="tile-image">
+							<h1 class="tile-name">Sexy Billy</h1>
+							<p>Sexy Billy has three new goals.</p>
+						</div>
+					</div>
+					<div class="tile">
+						<span class="notification-badge">3</span>
+						<div class="tile-inner-content">
+							<img src="images/test.jpg" class="tile-image">
+							<h1 class="tile-name">Sexy Billy</h1>
+							<p>Sexy Billy has three new goals.</p>
+						</div>
 					</div>
 				</div>
-				<div class="tile">
-					<span class="notification-badge">3</span>
-					<div class="tile-inner-content">
-						<img src="images/test.jpg" class="tile-image">
-						<h1 class="tile-name">Sexy Billy</h1>
-						<p>Sexy Billy has three new goals.</p>
+				<div style="width: 33%; display: inline-block;">
+					<div class="tile">
+						<span class="notification-badge">3</span>
+						<div class="tile-inner-content">
+							<img src="images/test.jpg" class="tile-image">
+							<h1 class="tile-name">Sexy Billy</h1>
+							<p>Sexy Billy has three new goals.</p>
+						</div>
+					</div>
+					<div class="tile">
+						<span class="notification-badge">3</span>
+						<div class="tile-inner-content">
+							<img src="images/test.jpg" class="tile-image">
+							<h1 class="tile-name">Sexy Billy</h1>
+							<p>Sexy Billy has three new goals.</p>
+						</div>
+					</div>
+					<div class="tile">
+						<span class="notification-badge">3</span>
+						<div class="tile-inner-content">
+							<img src="images/test.jpg" class="tile-image">
+							<h1 class="tile-name">Sexy Billy</h1>
+							<p>Sexy Billy has three new goals.</p>
+						</div>
+					</div>
+					<div class="tile">
+						<span class="notification-badge">3</span>
+						<div class="tile-inner-content">
+							<img src="images/test.jpg" class="tile-image">
+							<h1 class="tile-name">Sexy Billy</h1>
+							<p>Sexy Billy has three new goals.</p>
+						</div>
+					</div>
+					<div class="tile">
+						<span class="notification-badge">3</span>
+						<div class="tile-inner-content">
+							<img src="images/test.jpg" class="tile-image">
+							<h1 class="tile-name">Sexy Billy</h1>
+							<p>Sexy Billy has three new goals.</p>
+						</div>
+					</div>
+					<div class="tile">
+						<span class="notification-badge">3</span>
+						<div class="tile-inner-content">
+							<img src="images/test.jpg" class="tile-image">
+							<h1 class="tile-name">Sexy Billy</h1>
+							<p>Sexy Billy has three new goals.</p>
+						</div>
 					</div>
 				</div>
-				<div class="tile">
-					<span class="notification-badge">3</span>
-					<div class="tile-inner-content">
-						<img src="images/test.jpg" class="tile-image">
-						<h1 class="tile-name">Sexy Billy</h1>
-						<p>Sexy Billy has three new goals.</p>
+				<div style="width: 33%; display: inline-block;">
+					<div class="tile">
+						<span class="notification-badge">3</span>
+						<div class="tile-inner-content">
+							<img src="images/test.jpg" class="tile-image">
+							<h1 class="tile-name">Sexy Billy</h1>
+							<p>Sexy Billy has three new goals.</p>
+						</div>
 					</div>
-				</div>
-				<div class="tile">
-					<span class="notification-badge">3</span>
-					<div class="tile-inner-content">
-						<img src="images/test.jpg" class="tile-image">
-						<h1 class="tile-name">Sexy Billy</h1>
-						<p>Sexy Billy has three new goals.</p>
+					<div class="tile">
+						<span class="notification-badge">3</span>
+						<div class="tile-inner-content">
+							<img src="images/test.jpg" class="tile-image">
+							<h1 class="tile-name">Sexy Billy</h1>
+							<p>Sexy Billy has three new goals.</p>
+						</div>
 					</div>
-				</div>
-				<div class="tile">
-					<span class="notification-badge">3</span>
-					<div class="tile-inner-content">
-						<img src="images/test.jpg" class="tile-image">
-						<h1 class="tile-name">Sexy Billy</h1>
-						<p>Sexy Billy has three new goals.</p>
+					<div class="tile">
+						<span class="notification-badge">3</span>
+						<div class="tile-inner-content">
+							<img src="images/test.jpg" class="tile-image">
+							<h1 class="tile-name">Sexy Billy</h1>
+							<p>Sexy Billy has three new goals.</p>
+						</div>
 					</div>
-				</div>
-				<div class="tile">
-					<span class="notification-badge">3</span>
-					<div class="tile-inner-content">
-						<img src="images/test.jpg" class="tile-image">
-						<h1 class="tile-name">Sexy Billy</h1>
-						<p>Sexy Billy has three new goals.</p>
+					<div class="tile">
+						<span class="notification-badge">3</span>
+						<div class="tile-inner-content">
+							<img src="images/test.jpg" class="tile-image">
+							<h1 class="tile-name">Sexy Billy</h1>
+							<p>Sexy Billy has three new goals.</p>
+						</div>
+					</div>
+					<div class="tile">
+						<span class="notification-badge">3</span>
+						<div class="tile-inner-content">
+							<img src="images/test.jpg" class="tile-image">
+							<h1 class="tile-name">Sexy Billy</h1>
+							<p>Sexy Billy has three new goals.</p>
+						</div>
+					</div>
+					<div class="tile">
+						<span class="notification-badge">3</span>
+						<div class="tile-inner-content">
+							<img src="images/test.jpg" class="tile-image">
+							<h1 class="tile-name">Sexy Billy</h1>
+							<p>Sexy Billy has three new goals.</p>
+						</div>
 					</div>
 				</div>
 			</div>
@@ -81,7 +229,8 @@
 			</div>
 		</div>
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-		<script type="text/javascript" src="js/global.js"></script>
 		<script type="text/javascript" src="js/material-components.js"></script>
+		<script type="text/javascript" src="js/global.js"></script>
+		<script type="text/javascript" src="js/index.js"></script>
 	</body>
 </html>

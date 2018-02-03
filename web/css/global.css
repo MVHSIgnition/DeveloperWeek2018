@@ -54,7 +54,6 @@
 	border: 1px solid #cccccc;
 	margin: 10px 0;
 	border-radius: 4px;
-	width: 400px;
 	cursor: pointer;
 	transition: all 0.2s ease;
 }
@@ -102,4 +101,29 @@
 	color: white;
 	font-size: 13px;
 	overflow: hidden;
+}
+
+
+/* material stuff */
+
+.app-fab--absolute {
+	position: fixed;
+	bottom: 1rem;
+	right: 1rem;
+}
+
+@media(min-width: 1024px) {
+	.app-fab--absolute {
+		bottom: 1.5rem;
+		right: 1.5rem;
+	}
+}
+
+.my-card-container .mdc-card {
+  height: 350px;
+  width: 350px;
+}
+
+.new-goal-button {
+	background: red;
 }

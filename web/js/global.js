@@ -1,3 +1,5 @@
+mdc.autoInit();
+
 window.onscroll = function(e) {
 	if ($(document).scrollTop() === 0) {
 		$('.navbar').css('box-shadow', 'none');

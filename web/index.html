@@ -15,8 +15,9 @@
 				<h1 style="font-size: 30px;">EZ Goal</h1>
 			</div>
 			<div style="float: right; padding: 12px 18px;" class="nav-links">
-				<span>Home</span>
-				<span>Rewards</span>
+				<span><a href="index.html">Home</a></span>
+				<span><a href="">Rewards</a></span>
+				<span>Connect</span>
 				<span>Settings</span>
 			</div>
 		</div>
@@ -26,6 +27,16 @@
 		<button class="mdc-fab material-icons app-fab--absolute new-goal-button mdc-need-ripple" aria-label="Favorite">
 			<span class="mdc-fab__icon material-icons">create</span>
 		</button>
+		<div id="mdc-align-start-js-snackbar"
+			class="mdc-snackbar mdc-snackbar--align-start demo-hidden"
+			aria-live="assertive"
+			aria-atomic="true"
+			aria-hidden="true">
+			<div class="mdc-snackbar__text"></div>
+			<div class="mdc-snackbar__action-wrapper">
+				<button type="button" class="mdc-snackbar__action-button"></button>
+			</div>
+		</div>
 		<aside id="new-goal-dialog" class="mdc-dialog" role="alertdialog" aria-labelledby="my-mdc-dialog-label" aria-describedby="my-mdc-dialog-description">
 			<div class="mdc-dialog__surface">
 				<header class="mdc-dialog__header">
@@ -51,8 +62,9 @@
 					</section>
 					<div class="mdc-select">
 						<select class="mdc-select__surface">
-							<option value="" default selected>Udacity</option>
-							<option value="grains">FitBit</option>
+							<option value="" default selected disabled>Select One</option>
+							<option value="udacity">Udacity</option>
+							<option value="fitbit">FitBit</option>
 						</select>
 						<div class="mdc-select__bottom-line"></div>
 					</div>
@@ -62,8 +74,8 @@
 					This will be displayed on your public profile
 				</p>
 				<footer class="mdc-dialog__footer">
-					<button type="button" class="mdc-button mdc-dialog__footer__button mdc-dialog__footer__button--cancel" onclick="submitNewGoal();">Cancel</button>
-					<button type="button" class="mdc-button mdc-dialog__footer__button mdc-dialog__footer__button--accept">Ok</button>
+					<button type="button" class="mdc-button mdc-dialog__footer__button mdc-dialog__footer__button--cancel">Cancel</button>
+					<button type="button" class="mdc-button mdc-dialog__footer__button mdc-dialog__footer__button--accept" onclick="submitNewGoal();">Ok</button>
 				</footer>
 			</div>
 			<div class="mdc-dialog__backdrop"></div>

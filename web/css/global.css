@@ -6,6 +6,8 @@
 	font-size: 100%;
 	font: inherit;
 	font-family: 'Roboto', sans-serif;
+	text-decoration: none;
+	color: inherit;
 }
 
 .navbar {

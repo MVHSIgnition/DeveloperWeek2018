@@ -10,10 +10,10 @@
 	transition: all 0.2s ease;
 }
 
-.goal:active {
+/*.goal:active {
 	box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
 	transform: translate3d(0, -5px, 0);
-}
+}*/
 
 .goal > h1 {
 	font-size: 40px;
@@ -28,10 +28,9 @@
 	padding: 4px 6px;
 	margin: 6px 2px;
 	background: #ccc;
-	border-top-right-radius: 4px;
-	border-top-left-radius: 4px;
+	border-top-right-radius: 6px;
+	border-top-left-radius: 6px;
 }
-
 
 .goal > input:focus {
 	border-bottom: 2px solid dashed;
@@ -44,4 +43,21 @@
 
 .goal > input:focus + .money-sign {
 	font-size: 30px;
+}
+
+.goal > button {
+	padding: 6px;
+	background: #333333;
+	color: yellow;
+	border-bottom: 2px solid red;
+	border-radius: 4px;
+	border: none;
+	cursor: pointer;
+	outline: none;
+	width: 100px;
+}
+
+.goal > button:hover {
+	background: black;
+	color: red;
 }

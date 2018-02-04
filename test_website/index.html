@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<meta charset="utf-8">
+oot
+    <head>
+        <title>yo goobas</title>
+<script src="socket.io.js"></script>
+<script src="jquery-3.2.1.min.js"></script>
+</head>
+
+
+<script>
+$(function(){
+var socket = io("http://13.56.150.166:1266");
+console.log("1");
+socket.on("return_user_goals", function(msg){
+	console.log(msg);
+});
+
+/*
+socket.emit("user_register", {
+			username : "geroge_18",	
+			name : "Georg R",
+			email : "georgieboy22@gmale.com",
+			password : "slutlover2009",
+			});
+
+socket.emit("add_goal", {
+			username : "geroge_18",
+			info : "man i wanna pick up a hot broad",
+			desc : "please gimme the monies"
+			});
+setTimeout(function(){
+
+socket.emit("add_goal", {
+			username : "geroge_18",
+			info : "gonna work out like a crazy man",
+			desc : "pumpin iron n chokin dames"
+			});
+},1000);
+*/
+socket.emit("get_user_goals", {
+			username : "geroge_18"
+			});
+
+});			
+</script>
+
+</html>

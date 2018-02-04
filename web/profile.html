@@ -167,16 +167,12 @@
 			socket.on("return_user", function(msg){
 			console.log(msg);
 				document.getElementById("name").innerHTML = msg.name;
-<<<<<<< Updated upstream
 				document.getElementById("name_small").innerHTML = msg.name;
 				document.getElementById("location").innerHTML = msg.location;
 				document.getElementById("job").innerHTML = msg.job;
 				document.getElementById("bio").innerHTML = msg.bio;
+				//document.getElementById("name_small").innerHTML = msg.name;
 
-=======
-				document.getElementById("name_small").innerHTML = msg.name;
-
->>>>>>> Stashed changes
 			});
 			if(getUsername()){
 				socket.emit("get_user_from_username", {

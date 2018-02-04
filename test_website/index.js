@@ -72,7 +72,7 @@ io.on('connection', function(socket) {
 	//receives username
 	socket.on('get_user_goals',function(msg){
 		var user;
-		fs.readFile("/kiss/users/"+msg.username,"utf-8",function(err,user){
+		if(fs.readdirSync("/kiss/users/").indexOf(user) >= 0)fs.readFile("/kiss/users/"+msg.username,"utf-8",function(err,user){
 			user = JSON.parse(user);
 			var goals_list = [];
 			for(var i = 0; i < user.goals.length; i++)
@@ -160,6 +160,7 @@ io.on('connection', function(socket) {
 			goalID = userInfo.goals[index];
 			fs.readFile("/kiss/users/"+better,"utf-8",function(err,subInfo){
 				subInfo = JSON.parse(subInfo);
+				subInfo.balance -= amount;
 				subInfo.bets.push({"goalID":goalID,"amount":amount});
 				fs.writeFile("/kiss/users/"+better,JSON.stringify(subInfo));
 				fs.readFile("/kiss/goals/"+goalID+".goal","utf-8",function(err,goalInfo){

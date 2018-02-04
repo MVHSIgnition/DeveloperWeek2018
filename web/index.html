@@ -113,11 +113,9 @@
 			socket.on("return_username", function(msg){
 				if(msg == ""){
 					window.location.replace("login.html");
-					console.log("E");
+					
 				}
 				else{
-					console.log(msg);
-					console.log("E2");
 					actualusername = msg;
 
 					document.getElementById("log_out").innerHTML = "Log Out";

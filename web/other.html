@@ -64,7 +64,7 @@
 													<div class="mdc-text-field__bottom-line"></div>
 												</div>
 											</div>
-											<button type="button" class="mdc-button mdc-dialog__footer__button mdc-dialog__footer__button--accept" onclick="submitNewGoal();">Ok</button>
+											<button id="submit" type="button" class="mdc-button mdc-dialog__footer__button mdc-dialog__footer__button--accept" onclick="submitNewGoal();">Ok</button>
 									</div>
 
 								</div>
@@ -80,5 +80,42 @@
 		<script type="text/javascript" src="js/material-components.js"></script>
 		<script type="text/javascript" src="js/global.js"></script>
 		<script src="js/conditional-field.min.js"></script>
+		<script src="socket.io.js"></script>
+		
+		<script>
+		var usrn;
+		socket = io("http://13.56.150.166:1266");
+		socket.on("return_username", function(msg){
+			if(msg == ""){
+				window.location.replace("login.html");
+				console.log("E");
+			}
+			else{
+			usrn = msg;
+			}
+		});
+		socket.emit('get_username',{});
+		
+		document.getElementById("submit").onclick = function(){
+		$(function(){
+			var socket = io("http://13.56.150.166:1266");
+
+			socket.on("return_login_status", function(msg){
+				if(msg.success){
+					window.location.replace("index.html");
+				}
+				else{
+					window.location.replace("login.html");
+				}
+			});
+			console.log(usrn);
+			socket.emit("add_goal", {
+			info : document.getElementById("tf-box").value,
+			username : usrn
+			});
+		});
+		}
+		
+		</script>
 	</body>
 </html>

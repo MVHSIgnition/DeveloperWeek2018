@@ -71,7 +71,7 @@ io.on('connection', function(socket) {
 	
 	//receives username
 	socket.on('get_user_goals',function(msg){
-		var user = msg;
+		var user = msg.username;
 		if(fs.readdirSync("/kiss/users/").indexOf(user) >= 0)fs.readFile("/kiss/users/"+msg.username,"utf-8",function(err,user){
 			user = JSON.parse(user);
 			var goals_list = [];

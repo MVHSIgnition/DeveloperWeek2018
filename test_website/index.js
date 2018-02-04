@@ -48,7 +48,7 @@ io.on('connection', function(socket) {
 		var contents;
 		var currentID;
 		var jsonp;
-		console
+		console.log("add_goal");
 		fs.readFile("current_index","utf-8",function(err,contents){
 			if(err)throw err;
 			jsonp = JSON.parse(contents);

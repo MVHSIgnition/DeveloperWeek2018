@@ -71,7 +71,7 @@ io.on('connection', function(socket) {
 	
 	//receives username
 	socket.on('get_user_goals',function(msg){
-		var user;
+		var user = msg;
 		if(fs.readdirSync("/kiss/users/").indexOf(user) >= 0)fs.readFile("/kiss/users/"+msg.username,"utf-8",function(err,user){
 			user = JSON.parse(user);
 			var goals_list = [];
@@ -155,8 +155,8 @@ io.on('connection', function(socket) {
 		
 		fs.readFile("/kiss/users/"+owner,"utf-8",function(err,userInfo){
 			userInfo = JSON.parse(userInfo);
-			console.log(userInfo);	
-			console.log(userInfo.password);
+			//console.log(userInfo);	
+			//console.log(userInfo.password);
 			goalID = userInfo.goals[index];
 			fs.readFile("/kiss/users/"+better,"utf-8",function(err,subInfo){
 				subInfo = JSON.parse(subInfo);
@@ -176,8 +176,8 @@ io.on('connection', function(socket) {
 	//username
 	socket.on('get_friends_from_user', function(msg){
 		var user = msg.username;
-		
-		if(user in fs.readdirSync("/kiss/users"))fs.readFile("/kiss/users/"+user,"utf-8",function(err,userInfo){
+		console.log("e");
+		if(fs.readdirSync("/kiss/users").indexOf(user))fs.readFile("/kiss/users/"+user,"utf-8",function(err,userInfo){
 			userInfo = JSON.parse(userInfo);
 			var friendlist = [];
 			
@@ -189,6 +189,7 @@ io.on('connection', function(socket) {
 				});
 			}
 			setTimeout(function(){
+				console.log(friendlist);
 				socket.emit("return_user_friends",friendlist);
 			},500);
 		});

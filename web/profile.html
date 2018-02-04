@@ -1,5 +1,28 @@
 <!DOCTYPE html>
 <html>
+		<style>
+	
+		#myProgress {
+		width: 50%;
+		background-color: #ddd;
+		}
+
+		#myBar1 {
+		width: 1%;
+		height: 30px;
+		background-color: #4CAF50;
+		}
+		#myBar2 {
+		width: 1%;
+		height: 30px;
+		background-color: #4CAF50;
+		}
+		#myBar3 {
+		width: 1%;
+		height: 30px;
+		background-color: #4CAF50;
+		}
+		</style>
 	<head>
 		<meta charset="utf-8">
 		<title>Home - EZ Goal</title>
@@ -8,6 +31,7 @@
 		<link rel="stylesheet" type="text/css" href="css/global.css">
 		<link rel="stylesheet" type="text/css" href="css/profile.css">
 	</head>
+	
 	<body>
 		<!-- navbar -->
 		<div class="navbar">
@@ -63,22 +87,28 @@
 				<div style="display: table-cell;position: absolute; height: 100%; overflow-y: scroll;">
 					<div style="padding: 50px; ">
 						<div class="goal">
-							<h1 href = "check_goal.html">Walk 10000 steps for 5 days straight</h1>
-							<p>Goal Description</p>
+							<h1>Walk 10000 steps for 5 days straight</h1>
+							<div id="myProgress">
+								<div id="myBar1"></div>
+							</div>
 							<span class="money-sign">$</span><input type="number" name="" placeholder="bet">
 							<br>
 							<button>Bet</button>
 						</div>
 						<div class="goal">
 							<h1>Sleep at least 8 hours a day for 4 days straight</h1>
-							<p>Goal Description</p>
+							<div id="myProgress">
+								<div id="myBar2"></div>
+							</div>
 							<span class="money-sign">$</span><input type="number" name="" placeholder="bet">
 							<br>
 							<button>Bet</button>
 						</div>
 						<div class="goal">
-							<h1 href = "check_goal.html">Earn Sequoia Badge on Khan Academy</h1>
-							<p>Goal Description</p>
+							<h1>Earn Sequoia Badge on Khan Academy</h1>
+							<div id="myProgress">
+								<div id="myBar3"></div>
+							</div>
 							<span class="money-sign">$</span><input type="number" name="" placeholder="bet">
 							<br>
 							<button>Bet</button>
@@ -95,5 +125,9 @@
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 		<script type="text/javascript" src="js/material-components.js"></script>
 		<script type="text/javascript" src="js/global.js"></script>
+
+		<script>
+			
+		</script>
 	</body>
 </html>

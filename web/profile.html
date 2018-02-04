@@ -115,11 +115,11 @@
 
 					totalhtml+="<ul>";
 					for (var j = 0; j < usergoals[i].bets.length; j++) {
-						totalhtml+="<li class='bet'>"+usergoals[i].bets[j].username+": "+usergoals[i].bets[j].amount+"</li>";
+						totalhtml+="<li class='bet' style='padding-left:0.5em'>"+usergoals[i].bets[j].username+": "+usergoals[i].bets[j].amount+"</li>";
 					}
 					totalhtml+="</ul>";
 
-					totalhtml+="<div>"; //end div class goal
+					totalhtml+="</div>"; //end div class goal
 				}
 				//so can get goal.betperson
 				//goal = list[]bets username:amount

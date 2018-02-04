@@ -4,6 +4,9 @@ var server = require('http').Server(app);
 var io = require('socket.io')(server);
 var fs = require('fs');
 
+var ipdict = {};
+
+
 //resources server
 app.use(express.static(__dirname + '/www'));
 
@@ -14,7 +17,11 @@ server.listen(process.env.PORT || 1266, function() {
 
 io.on('connection', function(socket) {
     console.log('user connected');
-    
+    var address = socket.request.connection.remoteAddress;
+	if(!(address in ipdict))ipdict[address] = '';
+	//else console.log(ipdict[address]);
+	
+	
     socket.on('disconnect', function() {
         console.log('user disconnected');
     });
@@ -31,6 +38,8 @@ io.on('connection', function(socket) {
 		{
 			msg.goals = [];
 			msg.friends = [];
+			msg.bets = []; //goal ids, amount
+			msg.balance = 100;
 			fs.writeFile("/kiss/users/"+msg.username, JSON.stringify(msg));
 		}
 	});
@@ -45,7 +54,9 @@ io.on('connection', function(socket) {
 			jsonp = JSON.parse(contents);
 			currentID = jsonp.value;
 			currentID++;
-			jsonp.value = currentID;		
+			jsonp.value = currentID;
+			msg.bets = []; //username, amount
+			msg.pctcomplete = 0.0;
 			fs.writeFile("/kiss/goals/"+currentID+".goal", JSON.stringify(msg));
 			var oldf;
 			fs.readFile("/kiss/users/"+msg.username,"utf-8",function(err,oldf){
@@ -70,9 +81,12 @@ io.on('connection', function(socket) {
 				var gl;
 				fs.readFile("/kiss/goals/"+goalID+".goal","utf-8",function(err,gl){
 					goals_list.push(JSON.parse(gl));
+					//console.log(goals_list);
 				});
 			}
-			socket.emit("return_user_goals",goals_list);
+			setTimeout(function(){
+				socket.emit("return_user_goals",goals_list);
+			},500);
 		});
 	});
 	
@@ -88,8 +102,32 @@ io.on('connection', function(socket) {
 	socket.on('get_user_from_username',function(msg){
 		var userInfo;
 		fs.readFile("/kiss/users/"+msg.username,"utf-8",function(err,userInfo){
-			socket.emit('return_user',JSON.parse(goalInfo));
+			socket.emit('return_user',JSON.parse(userInfo));
 		});	
+	});
+	
+	socket.on('get_username',function(msg){
+		socket.emit('return_username', ipdict[address]);
+	});
+	
+	//receives an object of username and password
+	socket.on('log_in',function(msg){
+		var pass = msg.password;
+		var user = msg.username;
+		
+		fs.readFile("/kiss/users/"+user,"utf-8",function(err,userInfo){
+			userInfo = JSON.parse(userInfo);
+			if(pass == userInfo.password){
+				socket.emit('return_login_status',{"success" : true});
+				ipdict[address] = user;
+				//console.log(ipdict[address]);
+			}
+			else socket.emit('return_login_status',{"success" : false});
+		});
+	});
+	
+	socket.on('log_out',function(msg){
+		ipdict[address] = "";
 	});
 		
 	

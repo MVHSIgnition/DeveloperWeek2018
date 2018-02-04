@@ -42,64 +42,57 @@
 				<span><a href="index.html">Home</a></span>
 				<span><a href="rewards.html">Rewards</a></span>
 				<span><a href = "connect.html">Connect</a></span>
-				<span><a id = "profile">Profile</a></span>
-				<span><a id = "log_out"></a></span>
+				<span><a href="profile.html">Profile</a></span>
+				
 			</div>
 		</div>
 		<!-- end navbar -->
 		<div class="main-content">
-			<br>
-			<br>
-			<div style="display: table; margin-left: auto; margin-right: auto; width: 8em">
-				<div style="display: table-cell;height: 100%;">
-					<div style="padding: 100px;">
-						<div class="goal">
-							<h1 style="text-align: center">FitBit Premium for 1 Week</h1>
-							<br>
-							<button style="position:relative;top:50%; left:40%;">Redeem for 2000 points</button>
-						</div>
-						<div class="goal">
-							<h1 style="text-align: center">Custom Khan Academy "Goald" Badge</h1>
-							<br>
-							<button style="position:relative;top:50%; left:40%;">Redeem for 400 points</button>
-						</div>
-						<div class="goal">
-							<h1 style="text-align: center">Sworkit Premium for 1 month free!</h1>
-							<br>
-							<button style="position:relative;top:50%; left:40%;">Redeem for 2000 points</button>
-						</div>
-					</div>
+			<div style="max-height: 100vh; width: 100%; overflow: hidden; padding: 0; position: relative;">
+				<div style="position: absolute; bottom: 0; left: 0;">
+					<input id = "login">Put your email here</input>
+					<input id = "password">Put your password</input>
+					<button id = "submit">Submit</button>
 				</div>
+				<img src="images/background.jpg" style="width: 100%;">
+				
 			</div>
 		</div>
+		<div class="footer">
+			<div style="padding: 24px 20px;">
+				<h1>Terms | Privacy | English</h1>
+			</div>
+		</div>
+		
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 		<script type="text/javascript" src="js/material-components.js"></script>
 		<script type="text/javascript" src="js/global.js"></script>
 		<script src="socket.io.js"></script>
-		
-		
+
 		<script>
+		document.getElementById("submit").onclick = function(){
 		$(function(){
 			var socket = io("http://13.56.150.166:1266");
 			
-			socket.on("return_username", function(msg){
-				if(msg == ""){
-					window.location.replace("login.html");
-				}
-				else{
-					actualusername = msg;
-					document.getElementById("log_out").innerHTML = "Log Out";
-					document.getElementById("log_out").onclick = function(){
-					socket.emit("log_out", {});
-					window.location.replace("index.html");
-					};
-					document.getElementById("profile").href = "profile.html?user=" + msg;
-				}
+			socket.on("return_login_status", function(msg){
+			if(msg.success){
+				window.location.replace("index.html");
+			}
+			else{
+				window.location.replace("login.html");
+			}
 			});
 			
-			socket.emit("get_username", {});
-		});
+			socket.emit("log_in", {
+			username : document.getElementById("login").value,
+			password : document.getElementById("password").value
+			});
+		});	
+		}
 		
+		
+		
+
 		</script>
 	</body>
 </html>

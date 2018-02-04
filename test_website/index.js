@@ -101,7 +101,7 @@ io.on('connection', function(socket) {
 	//receives username {'username' : 'ex_username'}
 	socket.on('get_user_from_username',function(msg){
 		var userInfo;
-		fs.readFile("/kiss/users/"+msg.username,"utf-8",function(err,userInfo){
+		if(fs.readdirSync("/kiss/users/").indexOf(msg.username) >= 0)fs.readFile("/kiss/users/"+msg.username,"utf-8",function(err,userInfo){
 			socket.emit('return_user',JSON.parse(userInfo));
 		});	
 	});
@@ -115,12 +115,11 @@ io.on('connection', function(socket) {
 		var pass = msg.password;
 		var user = msg.username;
 		
-		fs.readFile("/kiss/users/"+user,"utf-8",function(err,userInfo){
+		if(fs.readdirSync("/kiss/users/").indexOf(user) >= 0)fs.readFile("/kiss/users/"+user,"utf-8",function(err,userInfo){
 			userInfo = JSON.parse(userInfo);
 			if(pass == userInfo.password){
 				socket.emit('return_login_status',{"success" : true});
 				ipdict[address] = user;
-				//console.log(ipdict[address]);
 			}
 			else socket.emit('return_login_status',{"success" : false});
 		});
@@ -128,6 +127,69 @@ io.on('connection', function(socket) {
 	
 	socket.on('log_out',function(msg){
 		ipdict[address] = "";
+	});
+	
+	//username, friendusername
+	socket.on('add_friend', function(msg){
+		var user   = msg.username;
+		var friend = msg.friendusername;
+		
+		if(fs.readdirSync("/kiss/users").indexOf(friend) >= 0)fs.readFile("/kiss/users/"+user,"utf-8",function(err,userInfo){
+			userInfo = JSON.parse(userInfo);
+			userInfo.friends.push(friend);
+			fs.writeFile("/kiss/users/"+user, JSON.stringify(userInfo));
+			socket.emit("friend_result",{"result" : true});
+		});
+		else socket.emit("friend_result",{"result" : false});
+	});
+	
+	//socket (goal owner, index, username, amount)
+	socket.on('add_bet_to_goal',function(msg){
+		var better = msg.username;
+		var owner  = msg.goalowner;
+		var index  = msg.indes;
+		var amount = msg.amount;
+		console.log(msg);
+		var goalID;
+		
+		fs.readFile("/kiss/users/"+owner,"utf-8",function(err,userInfo){
+			userInfo = JSON.parse(userInfo);
+			console.log(userInfo);	
+			console.log(userInfo.password);
+			goalID = userInfo.goals[index];
+			fs.readFile("/kiss/users/"+better,"utf-8",function(err,subInfo){
+				subInfo = JSON.parse(subInfo);
+				subInfo.bets.push({"goalID":goalID,"amount":amount});
+				fs.writeFile("/kiss/users/"+better,JSON.stringify(subInfo));
+				fs.readFile("/kiss/users/"+goalID+".goal","utf-8",function(err,goalInfo){
+					goalInfo = JSON.parse(JSON.stringify(goalInfo).trim());
+					goalInfo.bets.push({"username" : better, "amount" : amount});
+					fs.writeFile("/kiss/users/"+goalID+".goal",JSON.stringify(goalInfo));
+				});
+			});
+		});
+		
+	});
+	
+	//username
+	socket.on('get_friends_from_user', function(msg){
+		var user = msg.username;
+		
+		if(user in fs.readdirSync("/kiss/users"))fs.readFile("/kiss/users/"+user,"utf-8",function(err,userInfo){
+			userInfo = JSON.parse(userInfo);
+			var friendlist = [];
+			
+			for(var i = 0; i < userInfo.friends.length; i++)
+			{
+				fs.readFile("/kiss/users/"+userInfo.friends[i],"utf-8",function(err,subInfo){
+					subInfo = JSON.parse(subInfo);
+					friendlist.push(subInfo);
+				});
+			}
+			setTimeout(function(){
+				socket.emit("return_user_friends",friendlist);
+			},500);
+		});
 	});
 		
 	

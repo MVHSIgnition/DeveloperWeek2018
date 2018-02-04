@@ -64,21 +64,11 @@
 							<div style="padding: 20px;">
 								<h1 id = "name_small" style="font-size: 40px;"></h1>
 								<div style="color: grey;">
-									<p>San Francisco, CA</p>
+									<p id="location">San Francisco, CA</p>
 									<br>
-									<p>Likes to watch TV and read books</p>
+									<p id="bio">Likes to watch TV and read books</p>
 									<br>
-									<p><i class="material-icons">work</i> Works at Snapchat</p>
-									<br>
-									<br>
-									<p>Likes to watch TV and read books</p>
-									<br>
-									<p><i class="material-icons">work</i> Works at Snapchat</p>
-									<br>
-									<br>
-									<p>Likes to watch TV and read books</p>
-									<br>
-									<p><i class="material-icons">work</i> Works at Snapchat</p>
+									<p><i class="material-icons">work</i> <span id="job">Works at Snapchat</span></p>
 									<br>
 								</div>
 							</div>
@@ -118,26 +108,36 @@
 		$(function(){
 			var socket = io("http://13.56.150.166:1266");
 			socket.on("return_user_goals", function(msg){
-			var usergoals = msg;
-			var totalhtml = "";
-			for(var i = 0; i < usergoals.length; i++){
-			totalhtml+="<div class='goal'><h1>"+usergoals[i].info+"</h1><div id='myProgress'><div id='myBar1'></div></div><span class='money-sign'>$</span><input id ='"+i+"a' type='number' name='' placeholder='bet'></input><br><button id = '"+i+"'>Bet</button></div>";
-			}
-			
-			document.getElementById("goals_list").innerHTML = totalhtml;
-			console.log(usergoals.length);
-			for(var k = 0; k < usergoals.length; k++){
-				$("#"+k).click(function(){
-					var currentid = this.id;
-					socket.emit("add_bet_to_goal", {
-								username: actualusername,
-								goalowner: getUsername(),
-								indes: parseInt(currentid),
-								amount: document.getElementById(currentid+"a").value
-							});
-				});
+				var usergoals = msg;
+				var totalhtml = "";
+				for(var i = 0; i < usergoals.length; i++){
+					totalhtml+="<div class='goal'><h1>"+usergoals[i].info+"</h1><div id='myProgress'><div id='myBar1'></div></div><span class='money-sign'>$</span><input id ='"+i+"a' type='number' name='' placeholder='bet'></input><br><button id = '"+i+"'>Bet</button>";
+					
+					totalhtml+="<ul>";
+					for (var j = 0; j < usergoals[i].bets.length; j++) {
+						totalhtml+="<li class='bet'>"+usergoals[i].bets[j].username+": "+usergoals[i].bets[j].amount+"</li>";
+					}
+					totalhtml+="</ul>";
+					
+					totalhtml+="<div>"; //end div class goal
+				}
+				//so can get goal.betperson 
+				//goal = list[]bets username:amount
 				
-			}
+				document.getElementById("goals_list").innerHTML = totalhtml;
+				console.log(usergoals.length);
+				for(var k = 0; k < usergoals.length; k++){
+					$("#"+k).click(function(){
+						var currentid = this.id;
+						socket.emit("add_bet_to_goal", {
+									username: actualusername,
+									goalowner: getUsername(),
+									indes: parseInt(currentid),
+									amount: document.getElementById(currentid+"a").value
+								});
+					});
+					
+				}
 			});
 			socket.on("return_username", function(msg){
 				if(msg == ""){
@@ -167,7 +167,10 @@
 			socket.on("return_user", function(msg){
 			console.log(msg);
 				document.getElementById("name").innerHTML = msg.name;
-				document.getElementById("name_small").innerHTML = msg.name;
+				document.getElementById("name_small").innerHTML = msg.name; 
+				document.getElementById("location").innerHTML = msg.location; 
+				document.getElementById("job").innerHTML = msg.job; 
+				document.getElementById("bio").innerHTML = msg.bio; 
 				
 			});
 			if(getUsername()){

@@ -107,6 +107,7 @@ io.on('connection', function(socket) {
 	});
 	
 	socket.on('get_username',function(msg){
+		//console.log(ipdict[address]);
 		socket.emit('return_username', ipdict[address]);
 	});
 	

@@ -131,10 +131,6 @@ class ESLPackageCreation
 		$build = array(
 			'documents' => array(
 				array(
-					'id' => 'default-consent',
-					'name' => 'Electronic Disclosures and Signatures Consent'
-				) ,
-				array(
 					'id' => 'contract',
 					'name' => 'Sample Contract'
 				)

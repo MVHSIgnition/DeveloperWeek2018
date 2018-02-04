@@ -21,7 +21,7 @@ $asdf = 'dsf';
 <title>Form Processing</title>
 </head>
 <body>
-  <h3>Thank you for completing the form! Please sign the document below:</h3>
+  <h3>Thank you for completing the form! Please sign the document below to verify your pledge to complete your goal!</h3>
 
    <iframe src="https://sandbox.esignlive.com/access?sessionToken=<?php echo $token['value']; ?>" width="1000" height="700"></iframe>
 

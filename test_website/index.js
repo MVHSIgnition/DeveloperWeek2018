@@ -115,14 +115,19 @@ io.on('connection', function(socket) {
 		var pass = msg.password;
 		var user = msg.username;
 		
-		fs.readFile("/kiss/users"+user,"utf-8",function(err,userInfo){
+		fs.readFile("/kiss/users/"+user,"utf-8",function(err,userInfo){
 			userInfo = JSON.parse(userInfo);
 			if(pass == userInfo.password){
 				socket.emit('return_login_status',{"success" : true});
 				ipdict[address] = user;
+				//console.log(ipdict[address]);
 			}
 			else socket.emit('return_login_status',{"success" : false});
 		});
+	});
+	
+	socket.on('log_out',function(msg){
+		ipdict[address] = "";
 	});
 		
 	

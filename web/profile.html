@@ -64,7 +64,7 @@
 							<div style="padding: 20px;">
 								<h1 id = "name_small" style="font-size: 40px;"></h1>
 								<div style="color: grey;">
-									<p id="location"><i class="material-icons"><img src="images/globe.png" style="width:32px;height:32px"/></i>San Francisco, CA</p>
+									<p><i class="material-icons"><img src="images/globe.png" style="width:32px;height:32px"/></i><span id="location">San Francisco, CA</span></p>
 									<br>
 									<p id="bio">Likes to watch TV and read books</p>
 									<br>
@@ -115,7 +115,7 @@
 
 					totalhtml+="<ul>";
 					for (var j = 0; j < usergoals[i].bets.length; j++) {
-						totalhtml+="<li class='bet' style='padding-left:0.5em'>"+usergoals[i].bets[j].username+": "+usergoals[i].bets[j].amount+"</li>";
+						totalhtml+="<li class='bet' style='margin-left:1em;'>"+usergoals[i].bets[j].username+": $"+usergoals[i].bets[j].amount+"</li>";
 					}
 					totalhtml+="</ul>";
 

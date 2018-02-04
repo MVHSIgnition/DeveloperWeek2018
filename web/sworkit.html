@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+		<style>
+
+		#myProgress {
+		width: 50%;
+		background-color: #ddd;
+		}
+
+		#myBar1 {
+		width: 1%;
+		height: 30px;
+		background-color: #4CAF50;
+		}
+		#myBar2 {
+		width: 1%;
+		height: 30px;
+		background-color: #4CAF50;
+		}
+		#myBar3 {
+		width: 1%;
+		height: 30px;
+		background-color: #4CAF50;
+		}
+		</style>
+	<head>
+		<meta charset="utf-8">
+		<title>Home - EZ Goal</title>
+		<link href="https://fonts.googleapis.com/css?family=Roboto|Material+Icons" rel="stylesheet">
+		<link rel="stylesheet" type="text/css" href="css/material-components.css">
+		<link rel="stylesheet" type="text/css" href="css/global.css">
+		<link rel="stylesheet" type="text/css" href="css/profile.css">
+	</head>
+
+	<body>
+		<!-- navbar -->
+		<div class="navbar">
+			<div style="padding: 0 10px;">
+				<h1 style="font-size: 30px;"><a href="index.html">EZ Goal</a></h1>
+			</div>
+			<div style="float: right; padding: 12px 18px;" class="nav-links">
+				<span><a href="index.html">Home</a></span>
+				<span><a href="rewards.html">Rewards</a></span>
+				<span>Connect</span>
+				<span><a>Profile</a></span>
+			</div>
+		</div>
+		<!-- end navbar -->
+		<div class="main-content">
+			<br>
+			<br>
+			<div style="display: table; margin-left: auto; margin-right: auto; width: 8em">
+				<div style="display: table-cell;height: 100%;">
+					<div style="padding: 100px;">
+						<div class="goal">
+							<h1 style="text-align: center">SWORKIT Challenges</h1>
+							<br>
+									<br>
+									<div class="fitbit" style="padding-top: .37cm;">
+										<div class="mdc-select">
+											<br>
+											<select class="mdc-select__surface">
+												<option value="upperBody">Upper Body Challenge</option>
+												<option value="Core">Core Challenge</option>
+												<option value="Cardio">Cardio Challenge</option>
+											</select>
+
+											<div class="mdc-select__bottom-line"></div>
+
+											</div>
+											<div class= "upperBody" id="demo-tf-box-wrapper">
+												<div id="tf-box-example" class="mdc-text-field mdc-text-field--box" data-demo-no-auto-js>
+													<input required type="text" id="tf-box" class="mdc-text-field__input"
+																 aria-controls="name-validation-message">
+													<label for="tf-box" class="mdc-text-field__label">How long per day?</label>
+													<div class="mdc-text-field__bottom-line"></div>
+												</div>
+											</div>
+											<div class= "upperDays" id="demo-tf-box-wrapper">
+												<div id="tf-box-example" class="mdc-text-field mdc-text-field--box" data-demo-no-auto-js>
+													<input required type="text" id="tf-box" class="mdc-text-field__input"
+																 aria-controls="name-validation-message">
+													<label for="tf-box" class="mdc-text-field__label">How many days?</label>
+													<div class="mdc-text-field__bottom-line"></div>
+												</div>
+											</div>
+											<div class= "core" id="demo-tf-box-wrapper">
+												<div id="tf-box-example" class="mdc-text-field mdc-text-field--box" data-demo-no-auto-js>
+													<input required type="text" id="tf-box" class="mdc-text-field__input"
+																 aria-controls="name-validation-message">
+													<label for="tf-box" class="mdc-text-field__label">How long per day?</label>
+													<div class="mdc-text-field__bottom-line"></div>
+												</div>
+											</div>
+											<div class= "coreDays" id="demo-tf-box-wrapper">
+												<div id="tf-box-example" class="mdc-text-field mdc-text-field--box" data-demo-no-auto-js>
+													<input required type="text" id="tf-box" class="mdc-text-field__input"
+																 aria-controls="name-validation-message">
+													<label for="tf-box" class="mdc-text-field__label">How many days?</label>
+													<div class="mdc-text-field__bottom-line"></div>
+												</div>
+											</div>
+											<div class= "cardio" id="demo-tf-box-wrapper">
+												<div id="tf-box-example" class="mdc-text-field mdc-text-field--box" data-demo-no-auto-js>
+													<input required type="text" id="tf-box" class="mdc-text-field__input"
+																 aria-controls="name-validation-message">
+													<label for="tf-box" class="mdc-text-field__label">How long per day?</label>
+													<div class="mdc-text-field__bottom-line"></div>
+												</div>
+											</div>
+											<div class= "cardioDays" id="demo-tf-box-wrapper">
+												<div id="tf-box-example" class="mdc-text-field mdc-text-field--box" data-demo-no-auto-js>
+													<input required type="text" id="tf-box" class="mdc-text-field__input"
+																 aria-controls="name-validation-message">
+													<label for="tf-box" class="mdc-text-field__label">How many days?</label>
+													<div class="mdc-text-field__bottom-line"></div>
+												</div>
+											</div>
+								</div>
+
+
+									</div>
+
+								</div>
+							</div>
+						</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+		<script type="text/javascript" src="js/material-components.js"></script>
+		<script type="text/javascript" src="js/global.js"></script>
+		<script src="js/conditional-field.min.js"></script>
+		<script>
+		new ConditionalField({
+			control: '.mdc-select__surface',
+			visibility: {
+				'upperBody': '.upperBody,.upperDays',
+				'Core': '.core, .coreDays',
+				'Cardio': '.cardio, .cardioDays'
+			}
+			});
+		</script>
+	</body>
+</html>

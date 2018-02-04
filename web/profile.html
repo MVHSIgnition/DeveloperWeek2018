@@ -1,5 +1,28 @@
 <!DOCTYPE html>
 <html>
+		<style>
+	
+		#myProgress {
+		width: 50%;
+		background-color: #ddd;
+		}
+
+		#myBar1 {
+		width: 1%;
+		height: 30px;
+		background-color: #4CAF50;
+		}
+		#myBar2 {
+		width: 1%;
+		height: 30px;
+		background-color: #4CAF50;
+		}
+		#myBar3 {
+		width: 1%;
+		height: 30px;
+		background-color: #4CAF50;
+		}
+		</style>
 	<head>
 		<meta charset="utf-8">
 		<title>Home - EZ Goal</title>
@@ -8,26 +31,90 @@
 		<link rel="stylesheet" type="text/css" href="css/global.css">
 		<link rel="stylesheet" type="text/css" href="css/profile.css">
 	</head>
+	
 	<body>
 		<!-- navbar -->
 		<div class="navbar">
 			<div style="padding: 0 10px;">
-				<h1 style="font-size: 30px;">EZ Goal</h1>
+				<h1 style="font-size: 30px;"><a href="index.html">EZ Goal</a></h1>
 			</div>
 			<div style="float: right; padding: 12px 18px;" class="nav-links">
 				<span><a href="index.html">Home</a></span>
 				<span><a href="">Rewards</a></span>
 				<span>Connect</span>
-				<span>Settings</span>
+				<span><a>Profile</a></span>
 			</div>
 		</div>
-		<div style="height: 60px"></div>
 		<!-- end navbar -->
 		<div class="main-content">
-			<div style="height: 100%; width: 100%; overflow: hidden; padding: 0;">
-				<img src="images/background.jpg" style="width: 100%; height: 100%;">
+			<div style="max-height: 100vh; width: 100%; overflow: hidden; padding: 0; position: relative;">
+				<div style="position: absolute; bottom: 0; left: 0;">
+					<h1 style="color: white; z-index: 10; font-size: 140px; padding: 30px;">Sexy Billy</h1>
+				</div>
+				<img src="images/background.jpg" style="width: 100%;">
 			</div>
-			<div style="padding: 50px;">
+			<br>
+			<br>
+			<div style="display: table;">
+				<div style="display: table-cell; width: 400px;">
+					<div style="box-shadow: 0 4px 10px 0 rgba(0,0,0,0.2), 0 4px 20px 0 rgba(0,0,0,0.19); width: 100%; border-radius: 10px; overflow: hidden;">
+						<div style="width: 100%; height: 300px; background: url('images/test.jpg'); background-size: cover; background-repeat: no-repeat; background-position: center center; margin: 0 auto;"></div>
+						<div style="width: 100%; margin: 0 auto;">
+							<div style="padding: 20px;">
+								<h1 style="font-size: 40px;">Sexy Billy</h1>
+								<div style="color: grey;">
+									<p>San Francisco, CA</p>
+									<br>
+									<p>Likes to watch TV and read books</p>
+									<br>
+									<p><i class="material-icons">work</i> Works at Snapchat</p>
+									<br>
+									<br>
+									<p>Likes to watch TV and read books</p>
+									<br>
+									<p><i class="material-icons">work</i> Works at Snapchat</p>
+									<br>
+									<br>
+									<p>Likes to watch TV and read books</p>
+									<br>
+									<p><i class="material-icons">work</i> Works at Snapchat</p>
+									<br>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div style="display: table-cell;position: absolute; height: 100%; overflow-y: scroll;">
+					<div style="padding: 50px; ">
+						<div class="goal">
+							<h1>Walk 10000 steps for 5 days straight</h1>
+							<div id="myProgress">
+								<div id="myBar1"></div>
+							</div>
+							<span class="money-sign">$</span><input type="number" name="" placeholder="bet">
+							<br>
+							<button>Bet</button>
+						</div>
+						<div class="goal">
+							<h1>Sleep at least 8 hours a day for 4 days straight</h1>
+							<div id="myProgress">
+								<div id="myBar2"></div>
+							</div>
+							<span class="money-sign">$</span><input type="number" name="" placeholder="bet">
+							<br>
+							<button>Bet</button>
+						</div>
+						<div class="goal">
+							<h1>Earn Sequoia Badge on Khan Academy</h1>
+							<div id="myProgress">
+								<div id="myBar3"></div>
+							</div>
+							<span class="money-sign">$</span><input type="number" name="" placeholder="bet">
+							<br>
+							<button>Bet</button>
+						</div>
+					</div>
+				</div>
 			</div>
 		</div>
 		<div class="footer">
@@ -38,5 +125,9 @@
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 		<script type="text/javascript" src="js/material-components.js"></script>
 		<script type="text/javascript" src="js/global.js"></script>
+
+		<script>
+			
+		</script>
 	</body>
 </html>

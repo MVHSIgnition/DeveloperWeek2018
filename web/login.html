@@ -1,28 +1,5 @@
 <!DOCTYPE html>
 <html>
-		<style>
-
-		#myProgress {
-		width: 50%;
-		background-color: #ddd;
-		}
-
-		#myBar1 {
-		width: 1%;
-		height: 30px;
-		background-color: #4CAF50;
-		}
-		#myBar2 {
-		width: 1%;
-		height: 30px;
-		background-color: #4CAF50;
-		}
-		#myBar3 {
-		width: 1%;
-		height: 30px;
-		background-color: #4CAF50;
-		}
-		</style>
 	<head>
 		<meta charset="utf-8">
 		<title>Home - EZ Goal</title>
@@ -48,50 +25,9 @@
 		<!-- end navbar -->
 		<div class="main-content">
 			<div style="max-height: 100vh; width: 100%; overflow: hidden; padding: 0; position: relative;">
-				<div style="position: absolute; bottom: 0; left: 0;">
-					<h1 id = "name" style="color: white; z-index: 10; font-size: 140px; padding: 30px;">Sexy Billy</h1>
-				</div>
-				<img src="images/background.jpg" style="width: 100%;">
-			</div>
-			<br>
-			<br>
-			<div style="display: table;">
-				<div style="display: table-cell; width: 400px;">
-					<div style="box-shadow: 0 4px 10px 0 rgba(0,0,0,0.2), 0 4px 20px 0 rgba(0,0,0,0.19); width: 100%; border-radius: 10px; overflow: hidden;">
-						<div style="width: 100%; height: 300px; background: url('images/test.jpg'); background-size: cover; background-repeat: no-repeat; background-position: center center; margin: 0 auto;"></div>
-						<div style="width: 100%; margin: 0 auto;">
-							<div style="padding: 20px;">
-								<h1 id = "name_small" style="font-size: 40px;">Sexy Billy</h1>
-								<div style="color: grey;">
-									<p>San Francisco, CA</p>
-									<br>
-									<p>Likes to watch TV and read books</p>
-									<br>
-									<p><i class="material-icons">work</i> Works at Snapchat</p>
-									<br>
-									<br>
-									<p>Likes to watch TV and read books</p>
-									<br>
-									<p><i class="material-icons">work</i> Works at Snapchat</p>
-									<br>
-									<br>
-									<p>Likes to watch TV and read books</p>
-									<br>
-									<p><i class="material-icons">work</i> Works at Snapchat</p>
-									<br>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div style="display: table-cell;position: absolute; height: 100%; overflow-y: scroll;">
-					<div id = "goals_list" style="padding: 50px; ">
-					
-
-						
-					</div>
-					
-				</div>
+				
+				
+				
 			</div>
 		</div>
 		<div class="footer">
@@ -128,7 +64,7 @@
 			
 			socket.on("return_username", function(msg){
 				if(msg == ""){
-					window.location.replace("login.html");
+					window.location.replace("index.html");
 				}
 				else{
 					actualusername = msg;

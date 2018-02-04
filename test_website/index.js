@@ -75,7 +75,7 @@ io.on('connection', function(socket) {
 			socket.emit("return_user_goals",goals_list);
 		});
 	});
-	
+		
 	//receives goal ID {"id" : 1000}
 	socket.on('get_goal_from_id',function(msg){
 		var goalInfo;

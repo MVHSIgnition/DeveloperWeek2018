@@ -39,11 +39,14 @@
 				<h1 style="font-size: 30px;"><a href="index.html">EZ Goal</a></h1>
 			</div>
 			<div style="float: right; padding: 12px 18px;" class="nav-links">
+				<span>Goald: </span>
+				<span id= "goald"></span>
 				<span><a href="index.html">Home</a></span>
 				<span><a href="rewards.html">Rewards</a></span>
 				<span><a href = "connect.html">Connect</a></span>
 				<span><a id = "profile">Profile</a></span>
 				<span><a id = "log_out"></a></span>
+
 			</div>
 		</div>
 		<!-- end navbar -->
@@ -112,7 +115,7 @@
 				var totalhtml = "";
 				for(var i = 0; i < usergoals.length; i++){
 					totalhtml+="<div class='goal'><h1>"+usergoals[i].info+"</h1><div id='myProgress'><div id='myBar1'></div></div><span class='money-sign'>$</span><input id ='"+i+"a' type='number' name='' placeholder='bet'></input><br><button id = '"+i+"'>Bet</button>";
-					
+
 					totalhtml+="<h1 style='margin-top:1em'>Current Betters:</h1>";
 					totalhtml+="<ul style='margin-bottom:1.5em'>";
 					for (var j = 0; j < usergoals[i].bets.length; j++) {
@@ -172,8 +175,7 @@
 				document.getElementById("location").innerHTML = msg.location;
 				document.getElementById("job").innerHTML = msg.job;
 				document.getElementById("bio").innerHTML = msg.bio;
-				//document.getElementById("name_small").innerHTML = msg.name;
-
+				document.getElementById("goald").innerHTML = msg.balance;
 			});
 			if(getUsername()){
 				socket.emit("get_user_from_username", {

@@ -2,6 +2,46 @@
 
 .goal {
 	box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
-	width: 500px;
-	padding: 20px;
+	width: 600px;
+	padding: 10px;
+	margin-bottom: 15px;
+	cursor: pointer;
+	outline: none;
+	transition: all 0.2s ease;
+}
+
+.goal:active {
+	box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+	transform: translate3d(0, -5px, 0);
+}
+
+.goal > h1 {
+	font-size: 40px;
+	font-weight: bold;
+}
+
+.goal > input {
+	outline: none;
+	border: none;
+	border-bottom: 2px solid red;
+	transition: all 0.2s ease;
+	padding: 4px 6px;
+	margin: 6px 2px;
+	background: #ccc;
+	border-top-right-radius: 4px;
+	border-top-left-radius: 4px;
+}
+
+
+.goal > input:focus {
+	border-bottom: 2px solid dashed;
+	font-size: 30px;
+	background: transparent;
+	margin: 12px 2px;
+	padding: 6px 9px;
+	border-radius: 0;
+}
+
+.goal > input:focus + .money-sign {
+	font-size: 30px;
 }

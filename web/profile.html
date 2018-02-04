@@ -64,7 +64,7 @@
 							<div style="padding: 20px;">
 								<h1 id = "name_small" style="font-size: 40px;"></h1>
 								<div style="color: grey;">
-									<p id="location"><i class="material-icons"><img src="images/globe.png" style="width:32px;height:32px"/></i>San Francisco, CA</p>
+									<p><i class="material-icons"><img src="images/globe.png" style="width:32px;height:32px"/></i><span id="location">San Francisco, CA</span></p>
 									<br>
 									<p id="bio">Likes to watch TV and read books</p>
 									<br>
@@ -112,14 +112,15 @@
 				var totalhtml = "";
 				for(var i = 0; i < usergoals.length; i++){
 					totalhtml+="<div class='goal'><h1>"+usergoals[i].info+"</h1><div id='myProgress'><div id='myBar1'></div></div><span class='money-sign'>$</span><input id ='"+i+"a' type='number' name='' placeholder='bet'></input><br><button id = '"+i+"'>Bet</button>";
-
-					totalhtml+="<ul>";
+					
+					totalhtml+="<h1 style='margin-top:1em'>Current Betters:</h1>";
+					totalhtml+="<ul style='margin-bottom:1.5em'>";
 					for (var j = 0; j < usergoals[i].bets.length; j++) {
-						totalhtml+="<li class='bet'>"+usergoals[i].bets[j].username+": "+usergoals[i].bets[j].amount+"</li>";
+						totalhtml+="<li class='bet' style='margin-left:3.5em;'>"+usergoals[i].bets[j].username+": $"+usergoals[i].bets[j].amount+"</li>";
 					}
 					totalhtml+="</ul>";
 
-					totalhtml+="<div>"; //end div class goal
+					totalhtml+="</div>"; //end div class goal
 				}
 				//so can get goal.betperson
 				//goal = list[]bets username:amount

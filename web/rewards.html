@@ -42,7 +42,8 @@
 				<span><a href="index.html">Home</a></span>
 				<span><a href="rewards.html">Rewards</a></span>
 				<span>Connect</span>
-				<span><a>Profile</a></span>
+				<span><a id = "profile">Profile</a></span>
+				<span><a id = "log_out"></a></span>
 			</div>
 		</div>
 		<!-- end navbar -->
@@ -74,9 +75,31 @@
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 		<script type="text/javascript" src="js/material-components.js"></script>
 		<script type="text/javascript" src="js/global.js"></script>
-
+		<script src="socket.io.js"></script>
+		
+		
 		<script>
-
+		$(function(){
+			var socket = io("http://13.56.150.166:1266");
+			
+			socket.on("return_username", function(msg){
+				if(msg == ""){
+					window.location.replace("login.html");
+				}
+				else{
+					actualusername = msg;
+					document.getElementById("log_out").innerHTML = "Log Out";
+					document.getElementById("log_out").onclick = function(){
+					socket.emit("log_out", {});
+					window.location.replace("index.html");
+					};
+					document.getElementById("profile").href = "profile.html?user=" + msg;
+				}
+			});
+			
+			socket.emit("get_username", {});
+		});
+		
 		</script>
 	</body>
 </html>

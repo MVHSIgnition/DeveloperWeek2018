@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html>
+		<style>
+		#myProgress {
+		width: 50%;
+		background-color: #ddd;
+		}
+		#myBar1 {
+		width: 1%;
+		height: 30px;
+		background-color: #4CAF50;
+		}
+		#myBar2 {
+		width: 1%;
+		height: 30px;
+		background-color: #4CAF50;
+		}
+		#myBar3 {
+		width: 1%;
+		height: 30px;
+		background-color: #4CAF50;
+		}
+		</style>
+	<head>
+		<meta charset="utf-8">
+		<title>Home - EZ Goal</title>
+		<link href="https://fonts.googleapis.com/css?family=Roboto|Material+Icons" rel="stylesheet">
+		<link rel="stylesheet" type="text/css" href="css/material-components.css">
+		<link rel="stylesheet" type="text/css" href="css/global.css">
+		<link rel="stylesheet" type="text/css" href="css/profile.css">
+	</head>
+
+	<body>
+		<!-- navbar -->
+		<div class="navbar">
+			<div style="padding: 0 10px;">
+				<h1 style="font-size: 30px;"><a href="index.html">EZ Goal</a></h1>
+			</div>
+			<div style="float: right; padding: 12px 18px;" class="nav-links">
+				<span><a href="index.html">Home</a></span>
+				<span><a href="rewards.html">Rewards</a></span>
+				<span><a href = "connect.html">Connect</a></span>
+				<span><a href="profile.html">Profile</a></span>
+
+			</div>
+		</div>
+		<!-- end navbar -->
+		<div style="display: table; margin-left: auto; margin-right: auto; width: 8em">
+		  <div style="display: table-cell;height: 100%;">
+		    <div style="padding: 100px;">
+		      <div class="goal">
+		        <h1 style="text-align: center">Register</h1>
+		        <br>
+		            <br>
+		            <div id="demo-tf-box-wrapper">
+		              <b>Username:</b>
+		              <div id="tf-box-example" class="mdc-text-field mdc-text-field--box" data-demo-no-auto-js>
+
+		                <input required type="text" id="username" class="mdc-text-field__input"
+		                       aria-controls="name-validation-message">
+		                <label for="tf-box" class="mdc-text-field__label"></label>
+		                <div class="mdc-text-field__bottom-line"></div>
+
+		                  </div>
+		                </div>
+		                <div id="demo-tf-box-wrapper">
+		                  <b>Password:</b>
+		                  <div id="tf-box-example" class="mdc-text-field mdc-text-field--box" data-demo-no-auto-js>
+
+		                    <input required type="password" id="password" class="mdc-text-field__input"
+		                           aria-controls="name-validation-message">
+		                    <label for="tf-box" class="mdc-text-field__label"></label>
+		                    <div class="mdc-text-field__bottom-line"></div>
+
+		                      </div>
+		                    </div>
+						<div id="demo-tf-box-wrapper">
+		                  <b>Full Name:</b>
+		                  <div id="tf-box-example" class="mdc-text-field mdc-text-field--box" data-demo-no-auto-js>
+
+		                    <input required id="fullname" class="mdc-text-field__input"
+		                           aria-controls="name-validation-message">
+		                    <label for="tf-box" class="mdc-text-field__label"></label>
+		                    <div class="mdc-text-field__bottom-line"></div>
+
+		                      </div>
+		                    </div>
+						<div id="demo-tf-box-wrapper">
+		                  <b>Email:    </b>
+		                  <div id="tf-box-example" class="mdc-text-field mdc-text-field--box" data-demo-no-auto-js>
+
+		                    <input required id="email" class="mdc-text-field__input"
+		                           aria-controls="name-validation-message">
+		                    <label for="tf-box" class="mdc-text-field__label"></label>
+		                    <div class="mdc-text-field__bottom-line"></div>
+
+		                      </div>
+		                    </div>
+						<div id="demo-tf-box-wrapper">
+		                  <b>Bio:      </b>
+		                  <div id="tf-box-example" class="mdc-text-field mdc-text-field--box" data-demo-no-auto-js>
+
+		                    <input id="bio" class="mdc-text-field__input"
+		                           aria-controls="name-validation-message">
+		                    <label for="tf-box" class="mdc-text-field__label"></label>
+		                    <div class="mdc-text-field__bottom-line"></div>
+
+		                      </div>
+		                    </div>
+						<div id="demo-tf-box-wrapper">
+		                  <b>Location: </b>
+		                  <div id="tf-box-example" class="mdc-text-field mdc-text-field--box" data-demo-no-auto-js>
+
+		                    <input id="location" class="mdc-text-field__input"
+		                           aria-controls="name-validation-message">
+		                    <label for="tf-box" class="mdc-text-field__label"></label>
+		                    <div class="mdc-text-field__bottom-line"></div>
+
+		                      </div>
+		                    </div>
+						<div id="demo-tf-box-wrapper">
+		                  <b>Occupation </b>
+		                  <div id="tf-box-example" class="mdc-text-field mdc-text-field--box" data-demo-no-auto-js>
+
+		                    <input id="occupation" class="mdc-text-field__input"
+		                           aria-controls="name-validation-message">
+		                    <label for="tf-box" class="mdc-text-field__label"></label>
+		                    <div class="mdc-text-field__bottom-line"></div>
+
+		                      </div>
+		                    </div>
+							<br/>
+							<br/>
+		                <button id = "submit">Submit</button>
+		            </div>
+
+		          </div>
+		        </div>
+		      </div>
+		      </div>
+		    </div>
+		  </div>
+		</div>
+		</div>
+		<div class="footer">
+			<div style="padding: 24px 20px;">
+				<h1>Terms | Privacy | English</h1>
+			</div>
+		</div>
+
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+		<script type="text/javascript" src="js/material-components.js"></script>
+		<script type="text/javascript" src="js/global.js"></script>
+		<script src="socket.io.js"></script>
+
+		<script>
+		document.getElementById("submit").onclick = function(){
+		$(function(){
+			var socket = io("http://13.56.150.166:1266");
+
+			socket.on("register_response", function(msg){
+			if(!msg.success){
+				window.location.replace("login.html");
+			}
+			else{
+				window.location.replace("register.html");
+			}
+			});
+
+			socket.emit("user_register", {
+				username : document.getElementById("username").value,
+				password : document.getElementById("password").value,
+				name : document.getElementById("fullname").value,
+				email : document.getElementById("email").value,
+				location : document.getElementById("location").value,
+				job : document.getElementById("occupation").value,
+				bio : document.getElementById("bio").value
+			});
+		});
+		}
+
+
+
+		</script>
+	</body>
+</html>

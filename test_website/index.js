@@ -148,7 +148,7 @@ io.on('connection', function(socket) {
 		var better = msg.username;
 		var owner  = msg.goalowner;
 		var index  = msg.indes;
-		var amount = msg.amount;
+		var amount = parseInt(msg.amount);
 		console.log(msg);
 		var goalID;
 		
@@ -161,10 +161,10 @@ io.on('connection', function(socket) {
 				subInfo = JSON.parse(subInfo);
 				subInfo.bets.push({"goalID":goalID,"amount":amount});
 				fs.writeFile("/kiss/users/"+better,JSON.stringify(subInfo));
-				fs.readFile("/kiss/users/"+goalID+".goal","utf-8",function(err,goalInfo){
-					goalInfo = JSON.parse(JSON.stringify(goalInfo).trim());
+				fs.readFile("/kiss/goals/"+goalID+".goal","utf-8",function(err,goalInfo){
+					goalInfo = JSON.parse(goalInfo);
 					goalInfo.bets.push({"username" : better, "amount" : amount});
-					fs.writeFile("/kiss/users/"+goalID+".goal",JSON.stringify(goalInfo));
+					fs.writeFile("/kiss/goals/"+goalID+".goal",JSON.stringify(goalInfo));
 				});
 			});
 		});

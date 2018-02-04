@@ -111,12 +111,15 @@
 		$(function(){
 			var socket = io("http://13.56.150.166:1266");
 			socket.on("return_username", function(msg){
+				console.log(msg);
 				if(msg == ""){
 					window.location.replace("login.html");
 
 				}
 				else{
 					actualusername = msg;
+					socket.emit("get_friends_from_user", {"username":actualusername});
+					
 
 					document.getElementById("log_out").innerHTML = "Log Out";
 					document.getElementById("log_out").onclick = function(){
@@ -128,21 +131,28 @@
 					var friends;
 					socket.on("return_user_friends", function(msg2){
 							friends = msg2;
+							console.log(friends);
 							var friendhtml = "";
-					for(var i = 0; i < friends.length; i++)
-					{
-						friendhtml += "<div class='tile'><span class='notification-badge'>3</span><div class='tile-inner-content'><img src='images/test.jpg' class='tile-image'><h1 class='tile-name'>"+friends[i].name+"</h1><p>"+friends[i].name+" has "+friends[i].goals.length+" new goals.</p></div></div>";
-					}
-					document.getElementById("friends").innerHTML = friendhtml;
-						});
+							
+						for(var i = 0; i < friends.length; i++)
+						{
+							friendhtml +="<a href='profile.html?user="+friends[i].username+"'><div class='tile'><div class='tile-inner-content'><img src='images/test.jpg' class='tile-image'><h1 class='tile-name'>"+friends[i].name+"</h1><p>"+friends[i].name+" has "+friends[i].goals.length+" new goals.</p></div></div></a>";
+						}
+						document.getElementById("friends").innerHTML = friendhtml;
+					});
 
 
-					socket.emit("get_friends", actualusername, {});
 				}
-				});
+			});
 			socket.emit("get_username", {});
+			
+			
 
+			function gotouser(user) {
+				window.location.replace("profile.html?user="+user);
+			}
 		});
+		
 
 
 		</script>

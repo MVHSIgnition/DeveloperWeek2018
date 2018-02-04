@@ -106,6 +106,7 @@
 		$(function(){
 			var socket = io("http://13.56.150.166:1266");
 			socket.on("return_user_goals", function(msg){
+				console.log(msg);
 				var usergoals = msg;
 				var totalhtml = "";
 				for(var i = 0; i < usergoals.length; i++){

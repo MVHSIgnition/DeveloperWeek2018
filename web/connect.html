@@ -1,37 +1,13 @@
+<!-- index page -->
 <!DOCTYPE html>
 <html>
-		<style>
-
-		#myProgress {
-		width: 50%;
-		background-color: #ddd;
-		}
-
-		#myBar1 {
-		width: 1%;
-		height: 30px;
-		background-color: #4CAF50;
-		}
-		#myBar2 {
-		width: 1%;
-		height: 30px;
-		background-color: #4CAF50;
-		}
-		#myBar3 {
-		width: 1%;
-		height: 30px;
-		background-color: #4CAF50;
-		}
-		</style>
 	<head>
 		<meta charset="utf-8">
 		<title>Home - EZ Goal</title>
 		<link href="https://fonts.googleapis.com/css?family=Roboto|Material+Icons" rel="stylesheet">
 		<link rel="stylesheet" type="text/css" href="css/material-components.css">
 		<link rel="stylesheet" type="text/css" href="css/global.css">
-		<link rel="stylesheet" type="text/css" href="css/profile.css">
 	</head>
-
 	<body>
 		<!-- navbar -->
 		<div class="navbar">
@@ -46,59 +22,67 @@
 				<span><a id = "log_out"></a></span>
 			</div>
 		</div>
+		<div style="height: 60px"></div>
 		<!-- end navbar -->
-		<div class="main-content">
-			<br>
-			<br>
-			<div style="display: table; margin-left: auto; margin-right: auto; width: 8em">
-				<div style="display: table-cell;height: 100%;">
-					<div style="padding: 100px;">
-						<div class="goal">
-							<h1 style="text-align: center">FitBit Premium for 1 Week</h1>
-							<br>
-							<button style="position:relative;top:50%; left:40%;">Redeem for 2000 points</button>
-						</div>
-						<div class="goal">
-							<h1 style="text-align: center">Custom Khan Academy "Goald" Badge</h1>
-							<br>
-							<button style="position:relative;top:50%; left:40%;">Redeem for 400 points</button>
-						</div>
-						<div class="goal">
-							<h1 style="text-align: center">Sworkit Premium for 1 month free!</h1>
-							<br>
-							<button style="position:relative;top:50%; left:40%;">Redeem for 2000 points</button>
-						</div>
-					</div>
-				</div>
+		<!-- floating stuff -->
+		<div id = "addfriend">Add a friend!!! That's right, three exclamation marks.</div>
+		<input id = "friendname">Friend's name</input>
+		<button id = "submit">Submit</button>
+		<!-- floating stuff -->
+		<div id = "friends" class="main-content">
+			
+		</div>
+		
+		<div class="footer">
+			<div style="padding: 24px 20px;">
+				<h1>Terms | Privacy | English</h1>
 			</div>
 		</div>
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 		<script type="text/javascript" src="js/material-components.js"></script>
 		<script type="text/javascript" src="js/global.js"></script>
+		<script type="text/javascript" src="js/index.js"></script>
 		<script src="socket.io.js"></script>
-		
 		
 		<script>
 		$(function(){
 			var socket = io("http://13.56.150.166:1266");
-			
 			socket.on("return_username", function(msg){
 				if(msg == ""){
 					window.location.replace("login.html");
 				}
 				else{
 					actualusername = msg;
+					
 					document.getElementById("log_out").innerHTML = "Log Out";
 					document.getElementById("log_out").onclick = function(){
 					socket.emit("log_out", {});
 					window.location.replace("index.html");
-					};
+						};
+						
 					document.getElementById("profile").href = "profile.html?user=" + msg;
+					
+					socket.on("friend_result", function(msg){
+						if(msg.result){
+							document.getElementById("addfriend").innerHTML = 'Success! ' + document.getElementById("friendname").value+" is now your friend!";
+						}
+						else{
+							document.getElementById("addfriend").innerHTML = "Uh oh! Either "+document.getElementById("friendname").value+" doesn't exist or " + document.getElementById("friendname").value+" is already your friend.";
+						}
+					});
+					document.getElementById("submit").onclick = function(){
+						socket.emit("add_friend", {
+							username: actualusername,
+							friendusername: document.getElementById("friendname").value
+						});
+					}
+					
 				}
-			});
-			
+				});
 			socket.emit("get_username", {});
+			
 		});
+		
 		
 		</script>
 	</body>

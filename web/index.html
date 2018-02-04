@@ -7,6 +7,7 @@
 		<link href="https://fonts.googleapis.com/css?family=Roboto|Material+Icons" rel="stylesheet">
 		<link rel="stylesheet" type="text/css" href="css/material-components.css">
 		<link rel="stylesheet" type="text/css" href="css/global.css">
+
 	</head>
 	<body>
 		<!-- navbar -->
@@ -17,8 +18,9 @@
 			<div style="float: right; padding: 12px 18px;" class="nav-links">
 				<span><a href="index.html">Home</a></span>
 				<span><a href="rewards.html">Rewards</a></span>
-				<span>Connect</span>
-				<span><a href = "profile.html">Profile</a></span>
+				<span><a href = "connect.html">Connect</a></span>
+				<span><a id = "profile">Profile</a></span>
+				<span><a id = "log_out"></a></span>
 			</div>
 		</div>
 		<div style="height: 60px"></div>
@@ -46,6 +48,17 @@
 				</header>
 				<br>
 				<div style="padding: 20px;">
+					<div class="mdc-select">
+						<select id = "foo" class="mdc-select__surface">
+							<option value="" selected>Select an API</option>
+							<option value="khanacademy.html">Khan Academy</option>
+							<option value="fitbit.html">FitBit</option>
+							<option value="sworkit.html">SWORKIT</option>
+							<option value="other.html">Other</option>
+						</select>
+						<div class="mdc-select__bottom-line"></div>
+					</div>
+
 					<div id="demo-tf-box-wrapper">
 						<div id="tf-box-example" class="mdc-text-field mdc-text-field--box" data-demo-no-auto-js>
 							<input required type="text" id="tf-box" class="mdc-text-field__input"
@@ -60,15 +73,6 @@
 							<label for="textarea" class="mdc-text-field__label">Enter a description of your goal.</label>
 						</div>
 					</section>
-					<div class="mdc-select">
-						<select class="mdc-select__surface">
-							<option value="" default selected disabled>Select One</option>
-							<option value="khanAcademy">Khan Academy</option>
-							<option value="fitbit">FitBit</option>
-							<option value="appleHealth">Apple Health</option>
-						</select>
-						<div class="mdc-select__bottom-line"></div>
-					</div>
 				</div>
 				<br>
 				<p class="mdc-text-field-helper-text" aria-hidden="true">
@@ -82,170 +86,69 @@
 			<div class="mdc-dialog__backdrop"></div>
 		</aside>
 		<!-- floating stuff -->
-		<div class="main-content">
-			<div>
-				<div style="width: 33%; display: inline-block;">
-					<div class="tile">
-						<span class="notification-badge">3</span>
-						<div class="tile-inner-content">
-							<img src="images/person4.jpg" class="tile-image">
-							<h1 class="tile-name">Will</h1>
-							<p>Will has three new goals.</p>
-						</div>
-					</div>
-					<div class="tile">
-						<span class="notification-badge">2</span>
-						<div class="tile-inner-content">
-							<img src="images/person5.jpg" class="tile-image">
-							<h1 class="tile-name">Peyton</h1>
-							<p>Peyton has two new goals.</p>
-						</div>
-					</div>
-					<div class="tile">
-						<span class="notification-badge">1</span>
-						<div class="tile-inner-content">
-							<img src="images/person10.jpg" class="tile-image">
-							<h1 class="tile-name">Josh</h1>
-							<p>Josh has one new goals.</p>
-						</div>
-					</div>
-					<div class="tile">
-						<span class="notification-badge">3</span>
-						<div class="tile-inner-content">
-							<img src="images/test.jpg" class="tile-image">
-							<h1 class="tile-name">Priya</h1>
-							<p>Priya has three new goals.</p>
-						</div>
-					</div>
-					<div class="tile">
-						<span class="notification-badge">4</span>
-						<div class="tile-inner-content">
-							<img src="images/test.jpg" class="tile-image">
-							<h1 class="tile-name">Louis</h1>
-							<p>Louis has four new goals.</p>
-						</div>
-					</div>
-					<div class="tile">
-						<span class="notification-badge">3</span>
-						<div class="tile-inner-content">
-							<img src="images/govind.jpg" class="tile-image">
-							<h1 class="tile-name">Arjun</h1>
-							<p>Arjun has three new goals.</p>
-						</div>
-					</div>
-				</div>
-				<div style="width: 33%; display: inline-block;">
-					<div class="tile">
-						<span class="notification-badge">3</span>
-						<div class="tile-inner-content">
-							<img src="images/test.jpg" class="tile-image">
-							<h1 class="tile-name">Sexy Billy</h1>
-							<p>Sexy Billy has three new goals.</p>
-						</div>
-					</div>
-					<div class="tile">
-						<span class="notification-badge">3</span>
-						<div class="tile-inner-content">
-							<img src="images/test.jpg" class="tile-image">
-							<h1 class="tile-name">Sexy Billy</h1>
-							<p>Sexy Billy has three new goals.</p>
-						</div>
-					</div>
-					<div class="tile">
-						<span class="notification-badge">3</span>
-						<div class="tile-inner-content">
-							<img src="images/test.jpg" class="tile-image">
-							<h1 class="tile-name">Sexy Billy</h1>
-							<p>Sexy Billy has three new goals.</p>
-						</div>
-					</div>
-					<div class="tile">
-						<span class="notification-badge">3</span>
-						<div class="tile-inner-content">
-							<img src="images/test.jpg" class="tile-image">
-							<h1 class="tile-name">Sexy Billy</h1>
-							<p>Sexy Billy has three new goals.</p>
-						</div>
-					</div>
-					<div class="tile">
-						<span class="notification-badge">3</span>
-						<div class="tile-inner-content">
-							<img src="images/test.jpg" class="tile-image">
-							<h1 class="tile-name">Sexy Billy</h1>
-							<p>Sexy Billy has three new goals.</p>
-						</div>
-					</div>
-					<div class="tile">
-						<span class="notification-badge">3</span>
-						<div class="tile-inner-content">
-							<img src="images/test.jpg" class="tile-image">
-							<h1 class="tile-name">Sexy Billy</h1>
-							<p>Sexy Billy has three new goals.</p>
-						</div>
-					</div>
-				</div>
-				<div style="width: 33%; display: inline-block;">
-					<div class="tile">
-						<span class="notification-badge">3</span>
-						<div class="tile-inner-content">
-							<img src="images/test.jpg" class="tile-image">
-							<h1 class="tile-name">Sexy Billy</h1>
-							<p>Sexy Billy has three new goals.</p>
-						</div>
-					</div>
-					<div class="tile">
-						<span class="notification-badge">3</span>
-						<div class="tile-inner-content">
-							<img src="images/test.jpg" class="tile-image">
-							<h1 class="tile-name">Sexy Billy</h1>
-							<p>Sexy Billy has three new goals.</p>
-						</div>
-					</div>
-					<div class="tile">
-						<span class="notification-badge">3</span>
-						<div class="tile-inner-content">
-							<img src="images/test.jpg" class="tile-image">
-							<h1 class="tile-name">Sexy Billy</h1>
-							<p>Sexy Billy has three new goals.</p>
-						</div>
-					</div>
-					<div class="tile">
-						<span class="notification-badge">3</span>
-						<div class="tile-inner-content">
-							<img src="images/test.jpg" class="tile-image">
-							<h1 class="tile-name">Sexy Billy</h1>
-							<p>Sexy Billy has three new goals.</p>
-						</div>
-					</div>
-					<div class="tile">
-						<span class="notification-badge">3</span>
-						<div class="tile-inner-content">
-							<img src="images/test.jpg" class="tile-image">
-							<h1 class="tile-name">Sexy Billy</h1>
-							<p>Sexy Billy has three new goals.</p>
-						</div>
-					</div>
-					<div class="tile">
-						<span class="notification-badge">3</span>
-						<div class="tile-inner-content">
-							<img src="images/test.jpg" class="tile-image">
-							<h1 class="tile-name">Sexy Billy</h1>
-							<p>Sexy Billy has three new goals.</p>
-						</div>
-					</div>
-				</div>
-			</div>
+		<div id = "friends" class="main-content">
+
 		</div>
-		
+
 		<div class="footer">
 			<div style="padding: 24px 20px;">
 				<h1>Terms | Privacy | English</h1>
 			</div>
 		</div>
+
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 		<script type="text/javascript" src="js/material-components.js"></script>
 		<script type="text/javascript" src="js/global.js"></script>
 		<script type="text/javascript" src="js/index.js"></script>
+		<script src="js/index.js"></script>
+		<script src="js/conditional-field.min.js"></script>
+
+		<script>
+		document.getElementById("foo").onchange = function() {
+				if (this.selectedIndex!==0) {
+					window.location.href = this.value;
+				}
+			};
+		</script>
 		<script src="socket.io.js"></script>
+
+		<script>
+		$(function(){
+			var socket = io("http://13.56.150.166:1266");
+			socket.on("return_username", function(msg){
+				if(msg == ""){
+					window.location.replace("login.html");
+				}
+				else{
+					actualusername = msg;
+
+					document.getElementById("log_out").innerHTML = "Log Out";
+					document.getElementById("log_out").onclick = function(){
+					socket.emit("log_out", {});
+					window.location.replace("index.html");
+						};
+
+					document.getElementById("profile").href = "profile.html?user=" + msg;
+					var friends;
+					socket.on("return_user_friends", function(msg2){
+							friends = msg2;
+							var friendhtml = "";
+					for(var i = 0; i < friends.length; i++)
+					{
+						friendhtml += "<div class='tile'><span class='notification-badge'>3</span><div class='tile-inner-content'><img src='images/test.jpg' class='tile-image'><h1 class='tile-name'>"+friends[i].name+"</h1><p>"+friends[i].name+" has "+friends[i].goals.length+" new goals.</p></div></div>";
+					}
+					document.getElementById("friends").innerHTML = friendhtml;
+						});
+
+
+					socket.emit("get_friends", actualusername, {});
+				}
+				});
+			socket.emit("get_username", {});
+
+		});
+
+
+		</script>
 	</body>
 </html>

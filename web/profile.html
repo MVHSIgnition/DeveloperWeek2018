@@ -41,15 +41,16 @@
 			<div style="float: right; padding: 12px 18px;" class="nav-links">
 				<span><a href="index.html">Home</a></span>
 				<span><a href="rewards.html">Rewards</a></span>
-				<span>Connect</span>
-				<span><a>Profile</a></span>
+				<span><a href = "connect.html">Connect</a></span>
+				<span><a id = "profile">Profile</a></span>
+				<span><a id = "log_out"></a></span>
 			</div>
 		</div>
 		<!-- end navbar -->
 		<div class="main-content">
 			<div style="max-height: 100vh; width: 100%; overflow: hidden; padding: 0; position: relative;">
 				<div style="position: absolute; bottom: 0; left: 0;">
-					<h1 id = "name" style="color: white; z-index: 10; font-size: 140px; padding: 30px;">Sexy Billy</h1>
+					<h1 id = "name" style="color: white; z-index: 10; font-size: 140px; padding: 30px;"></h1>
 				</div>
 				<img src="images/background.jpg" style="width: 100%;">
 			</div>
@@ -61,7 +62,7 @@
 						<div style="width: 100%; height: 300px; background: url('images/test.jpg'); background-size: cover; background-repeat: no-repeat; background-position: center center; margin: 0 auto;"></div>
 						<div style="width: 100%; margin: 0 auto;">
 							<div style="padding: 20px;">
-								<h1 id = "name_small" style="font-size: 40px;">Sexy Billy</h1>
+								<h1 id = "name_small" style="font-size: 40px;"></h1>
 								<div style="color: grey;">
 									<p>San Francisco, CA</p>
 									<br>
@@ -105,6 +106,7 @@
 		<script src="socket.io.js"></script>
 
 		<script>
+
 		function getUsername() {
 			if(window.location.search.substring(1).split('?')[0].split('=')[0] !== 'user') {
 			return null;
@@ -119,20 +121,38 @@
 			var usergoals = msg;
 			var totalhtml = "";
 			for(var i = 0; i < usergoals.length; i++){
-			totalhtml+="<div class='goal'><h1>"+usergoals[i].info+"</h1><div id='myProgress'><div id='myBar1'></div></div><span class='money-sign'>$</span><input type='number' name='' placeholder='bet'><br><button onclick = 'makeABet("+i+")'>Bet</button></div>";
+			totalhtml+="<div class='goal'><h1>"+usergoals[i].info+"</h1><div id='myProgress'><div id='myBar1'></div></div><span class='money-sign'>$</span><input id ='"+i+"a' type='number' name='' placeholder='bet'></input><br><button id = '"+i+"'>Bet</button></div>";
 			}
 			
 			document.getElementById("goals_list").innerHTML = totalhtml;
-			
+			console.log(usergoals.length);
+			for(var k = 0; k < usergoals.length; k++){
+				$("#"+k).click(function(){
+					var currentid = this.id;
+					socket.emit("add_bet_to_goal", {
+								username: actualusername,
+								goalowner: getUsername(),
+								indes: parseInt(currentid),
+								amount: document.getElementById(currentid+"a").value
+							});
+				});
+				
+			}
 			});
-			
 			socket.on("return_username", function(msg){
 				if(msg == ""){
 					window.location.replace("login.html");
 				}
 				else{
 					actualusername = msg;
-					console.log(msg);
+					document.getElementById("log_out").innerHTML = "Log Out";
+					document.getElementById("log_out").onclick = function(){
+					socket.emit("log_out", {});
+					window.location.replace("index.html");
+					};
+					document.getElementById("profile").href = "profile.html?user=" + msg;
+					
+		
 				}
 			});
 			
@@ -151,18 +171,17 @@
 				
 			});
 			if(getUsername()){
-			socket.emit("get_user_from_username", {
-			username : getUsername()
-			});
+				socket.emit("get_user_from_username", {
+					username : getUsername()
+				});
+				
 			}
 			
 		
 			
 		});	
 		
-		function makeABet(i){
-			console.log(i);
-		}
+		
 		
 		
 

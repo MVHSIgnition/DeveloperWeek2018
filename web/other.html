@@ -41,9 +41,8 @@
 			<div style="float: right; padding: 12px 18px;" class="nav-links">
 				<span><a href="index.html">Home</a></span>
 				<span><a href="rewards.html">Rewards</a></span>
-				<span><a href = "connect.html">Connect</a></span>
-				<span><a id = "profile">Profile</a></span>
-				<span><a id = "log_out"></a></span>
+				<span>Connect</span>
+				<span><a>Profile</a></span>
 			</div>
 		</div>
 		<!-- end navbar -->
@@ -54,19 +53,22 @@
 				<div style="display: table-cell;height: 100%;">
 					<div style="padding: 100px;">
 						<div class="goal">
-							<h1 style="text-align: center">FitBit Premium for 1 Week</h1>
+							<h1 style="text-align: center">Other Challenge</h1>
 							<br>
-							<button style="position:relative;top:50%; left:40%;">Redeem for 2000 points</button>
+									<br>
+											<div class= "caloriesBurned" id="demo-tf-box-wrapper">
+												<div id="tf-box-example" class="mdc-text-field mdc-text-field--box" data-demo-no-auto-js>
+													<input required type="text" id="tf-box" class="mdc-text-field__input"
+																 aria-controls="name-validation-message">
+													<label for="tf-box" class="mdc-text-field__label">Other Goal:</label>
+													<div class="mdc-text-field__bottom-line"></div>
+												</div>
+											</div>
+									</div>
+
+								</div>
+							</div>
 						</div>
-						<div class="goal">
-							<h1 style="text-align: center">Custom Khan Academy "Goald" Badge</h1>
-							<br>
-							<button style="position:relative;top:50%; left:40%;">Redeem for 400 points</button>
-						</div>
-						<div class="goal">
-							<h1 style="text-align: center">Sworkit Premium for 1 month free!</h1>
-							<br>
-							<button style="position:relative;top:50%; left:40%;">Redeem for 2000 points</button>
 						</div>
 					</div>
 				</div>
@@ -75,31 +77,6 @@
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 		<script type="text/javascript" src="js/material-components.js"></script>
 		<script type="text/javascript" src="js/global.js"></script>
-		<script src="socket.io.js"></script>
-		
-		
-		<script>
-		$(function(){
-			var socket = io("http://13.56.150.166:1266");
-			
-			socket.on("return_username", function(msg){
-				if(msg == ""){
-					window.location.replace("login.html");
-				}
-				else{
-					actualusername = msg;
-					document.getElementById("log_out").innerHTML = "Log Out";
-					document.getElementById("log_out").onclick = function(){
-					socket.emit("log_out", {});
-					window.location.replace("index.html");
-					};
-					document.getElementById("profile").href = "profile.html?user=" + msg;
-				}
-			});
-			
-			socket.emit("get_username", {});
-		});
-		
-		</script>
+		<script src="js/conditional-field.min.js"></script>
 	</body>
 </html>
